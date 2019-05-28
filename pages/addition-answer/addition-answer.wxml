@@ -1,0 +1,9 @@
+<view class="addition-container" wx:if="{{!chooseTopic}}">
+    <view class="addition-content">
+        <textarea class="addition-input" focus="{{focus}}" placeholder="输入想要回复的内容" data-name='content' value="{{content}}" bindinput="contentChange">
+        </textarea>
+    </view>
+    <v-selectImage imageNumber="{{selectImageNumber}}" bind:getImageList="getImageList" isSelect="{{isFirst?'':true}}" selectImageList="{{selectImageList}}" />
+    <view class="submit" hover-class="on-submit" bind:tap="submit">回复</view>
+</view>
+<v-topic more="{{more}}" wx:if="{{chooseTopic}}" bind:getSelectTopic="getSelectTopic" bind:cancel="cancel" />

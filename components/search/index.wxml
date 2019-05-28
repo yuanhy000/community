@@ -1,0 +1,43 @@
+<view class="container">
+    <view class="header">
+        <view class="search-container">
+            <image class="icon" src="images/search.png"></image>
+            <input value="{{searchName}}" bind:confirm="onConfirm" placeholder-class="in-bar" placeholder="商品名" class="bar" auto-focus="true"></input>
+            <image bind:tap="onDelete" class="cancel-img" src="images/cancel.png"></image>
+        </view>
+        <view bind:tap="onCancel" class="cancel">取消</view>
+    </view>
+    <view wx:if="{{!searching}}">
+        <view class="history">
+            <view class="title">
+                <view class="chunk"></view>
+                <text>历史搜索</text>
+            </view>
+            <view class="tags">
+                <block wx:for="{{historyWords}}" wx:key="">
+                    <o-tag bind:tapping="onConfirm" class="tag-cmp" text="{{item}}" />
+                </block>
+            </view>
+        </view>
+        <view class="history hot-search">
+            <view class="title">
+                <view class="chunk"></view>
+                <text>热门搜索</text>
+            </view>
+            <view class="tags">
+                <block wx:for="{{hotWords}}" wx:key="">
+                    <v-tag bind:tapping="onConfirm" class="tag-cmp" text="{{item}}" />
+                </block>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{searching}}" class="products-container">
+        <block wx:for="{{productList}}" wx:key="">
+            <o-product product="{{item}}">
+            </o-product>
+        </block>
+    </view>
+    <o-loading class="loading-center" wx:if="{{loadingCenter}}" />
+    <o-loading class="loading" wx:if="{{loading}}" />
+    <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到商品</text>
+</view>

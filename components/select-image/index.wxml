@@ -1,0 +1,15 @@
+<view class="image-box">
+    <block wx:for="{{selectImageList}}" wx:key="{{index}}" wx:if="{{isSelect}}">
+        <view class="preview-image">
+            <image class="image-list" src="{{item}}" mode="aspectFill">
+            </image>
+            <icon bindtap="closeOption" class="icon" type="clear" data-index="{{index}}">
+            </icon>
+        </view>
+    </block>
+    <view bind:tap="selectImage" class="select-image" wx:if="{{!isMax}}">
+        <image class="" mode="scaleToFill" src="/images/addition/select-photo.png">
+        </image>
+        <view class="select-title">上传图片</view>
+    </view>
+</view>

@@ -1,0 +1,42 @@
+.highlight {
+    color: #6d70d3 !important;
+    margin: 1rpx;
+}
+
+.topic-item {
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx 30rpx;
+    background-color: #fff;
+    border-bottom: #ddd 1rpx solid;
+    align-items: center;
+}
+
+.topic-image {
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 20rpx;
+    margin: 0 30rpx 0 0;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-title-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.topic-title {
+    font-size: 30rpx;
+    color: #222;
+    margin-bottom: 20rpx;
+    letter-spacing: 2rpx;
+}
+
+.topic-description {
+    font-size: 26rpx;
+    color: #989dbb;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+        "v-topic": "/components/topic/index",
+        "v-selectVideo": "/components/select-video/index"
+
+    },
+    "navigationBarTitleText": "发布视频"
+}

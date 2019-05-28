@@ -1,0 +1,169 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enhance": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.6",
+	"appid": "wxa45868f0cd036de7",
+	"projectname": "community",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 15,
+			"list": [
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addition",
+					"pathName": "pages/addition/addition",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addition-daily",
+					"pathName": "pages/addition-daily/addition-daily",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addition-photo",
+					"pathName": "pages/addition-photo/addition-photo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addition-video",
+					"pathName": "pages/addition-video/addition-video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addition-question",
+					"pathName": "pages/addition-question/addition-question",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "daily",
+					"pathName": "pages/daily/daily",
+					"query": "id=44",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "video",
+					"pathName": "pages/video/video",
+					"query": "id=51",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Photo",
+					"pathName": "pages/photo/photo",
+					"query": "id=54",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "discovery",
+					"pathName": "pages/discovery/discovery",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "question",
+					"pathName": "pages/question/question",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "answer",
+					"pathName": "pages/answer/answer",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "topic",
+					"pathName": "pages/topic/topic",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "rank-photo",
+					"pathName": "pages/rank-photo/rank-photo",
+					"query": "behavior=7",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "user-detail",
+					"pathName": "pages/user-detail/user-detail",
+					"query": "id=1",
+					"scene": null
+				}
+			]
+		}
+	}
+}

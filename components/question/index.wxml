@@ -1,0 +1,15 @@
+<view class="questionList-item" bind:tap="onQuestion" data-id="{{questionInfo.id}}">
+    <view class="{{questionInfo.images.length == 0 ? 'questionList-info-row':'questionList-info'}}">
+        <view class="questionList-title">
+            {{questionInfo.title}}
+        </view>
+        <text class="questionList-answer" wx:if="{{questionInfo.answers.length != 0}}">{{questionInfo.answers[0].content}}</text>
+        <text class="questionList-answer" wx:else>该话题还没有回答，争取做第一个哦</text>
+        <view class="question-topic-container" wx:if="{{questionInfo.topics}}" bind:tap="onTopic" data-id="{{questionInfo.topics[0].id}}">
+            <view class="question-topic-name">
+                {{questionInfo.topics[0].name}}
+            </view>
+        </view>
+    </view>
+    <image wx:if="{{questionInfo.images.length != 0}}" class="questionList-image" src="{{questionInfo.images[0].url}}" mode="aspectFill"></image>
+</view>

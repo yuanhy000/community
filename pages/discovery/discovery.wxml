@@ -1,0 +1,110 @@
+<view class="discovery-container">
+    <!-- <view class="search-container">
+        <view class="search-box" bind:tap="onSearch">
+            <image class="icon" src="../../images/addition/search.png"></image>
+            <view class="bar">内容 / 主题 / 话题 / 用户</view>
+        </view>
+    </view> -->
+    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" style="height:{{currentTab == 0 ? swiperHeight : (currentTab == 1 ? swiperPhotoHeight : (currentTab == 2 ? swiperQuestionHeight : swiperVideoHeight))}}px">
+        <swiper-item>
+            <view class="item-container">
+                <view class="topic-title">
+                    推荐话题
+                </view>
+                <view class="question-container">
+                    <block wx:for="{{topQuestion}}" wx:key="">
+                        <view class="question-item" bind:tap="onQuestion" data-id="{{item.id}}">
+                            <image class="question-image" src="{{item.images.length != 0 ? item.images[0].url :'../../images/default/default.jpg'}}" mode="scaleToFill"></image>
+                            <view class="question-title">{{item.title}}</view>
+                        </view>
+                    </block>
+                </view>
+                <view class="topic-container">
+                    <view class="topic-title">
+                        推荐主题
+                    </view>
+                    <view class="topic-content">
+                        <block wx:for="{{topicInfo}}" wx:key="">
+                            <view class="topic-item-container" bind:tap="onTopic" data-id="{{item.id}}">
+                                <view class="topic-iamge-container">
+                                    <image class="item-image" src="{{item.image.length != 0 ? item.image.url :'../../images/default/default.jpg'}}" mode="aspectFit"></image>
+                                </view>
+                                <view class="topic-name-container">
+                                    <view class="item-name">
+                                        {{item.name}}
+                                    </view>
+                                </view>
+                                <view class="topic-count-container">
+                                    <view class="item-count">
+                                        {{item.article_count}} 条动态
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                    <v-loading class="loading" wx:if="{{loading}}" />
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-photo">
+                <view class="top-photo-container">
+                    <view class="week-top" bind:tap="onRankPhoto" data-behavior="7">
+                        <view class="week-title">周榜单</view>
+                        <image class="week-image" src="{{topWeekPhoto.images[0].url}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="week-top" bind:tap="onRankPhoto" data-behavior="30">
+                        <view class="week-title">月榜单</view>
+                        <image class="week-image" src="{{topMonthPhoto.images[0].url}}" mode="aspectFill"></image>
+                    </view>
+                </view>
+                <view class="topic-title">
+                    推荐摄影
+                </view>
+                <view class="photo-container">
+                    <block wx:for="{{photoList}}" wx:key="">
+                        <view class="photo-item">
+                            <image class="photo-content" src="{{item.images[0].url}}" mode="aspectFill" bind:tap="onPhoto" data-id="{{item.id}}"></image>
+                            <view class="item-info">
+                                <image class="photo-user" src="{{item.users.avatarUrl}}" mode="scaleToFill" bind:tap="onUser" data-id="{{item.users.id}}"></image>
+                                <view class="user-name" bind:tap="onUser" data-id="{{item.users.id}}">
+                                    {{item.users.nickname}}
+                                </view>
+                                <v-like bind:like="onLike" data-id="{{item.id}}" class="like" like="{{item.isVote}}" count="{{item.likes}}" />
+                            </view>
+                        </view>
+                    </block>
+                    <image class="image-else"></image>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-question">
+                <view class="questionList-container">
+                    <block wx:for="{{questionList}}" wx:key="">
+                        <v-question questionInfo="{{item}}" />
+                    </block>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-video">
+                <view wx:if="{{videoList.length!=0}}">
+                    <block wx:for="{{videoList}}" wx:key="">
+                        <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" />
+                    </block>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

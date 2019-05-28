@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "v-topic": "/components/topic/index",
+        "v-selectImage": "/components/select-image/index"
+    },
+    "navigationBarTitleText": "回复话题"
+}

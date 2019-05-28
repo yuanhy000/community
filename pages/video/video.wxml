@@ -1,0 +1,63 @@
+<view class="article-container">
+    <view class="video-container">
+        <video class="video-item" poster="{{articleInfo.videos[0].video_cover}}" src="{{articleInfo.videos[0].video_url}}" autoplay="true">
+        </video>
+    </view>
+    <view class="title-container">{{articleInfo.title}}</view>
+    <text class="content-container" wx:if="{{articleInfo.content}}">{{articleInfo.content}}</text>
+    <view class="author-container">
+        <view class="author-info">
+            <image class="author-image" mode="scaleToFill" src="{{articleInfo.users.avatarUrl}}">
+            </image>
+            <view class="author-other">
+                <view class="author-detail">
+                    <view class="author-name">
+                        {{articleInfo.users.nickname}}
+                    </view>
+                    <image class="author-sex" mode="scaleToFill" src="/images/article/boy.png" wx:if="{{articleInfo.users.sex == 1}}">
+                    </image>
+                </view>
+                <view class="time">
+                    {{articleInfo.created_at}}
+                </view>
+            </view>
+            <image class="" mode="scaleToFill" src="/images/article/girl.png" wx:if="{{articleInfo.users.sex == 0}}">
+            </image>
+        </view>
+        <view class="follow-container" bind:tap="followUser" data-behaviour="1" wx:if="{{!articleInfo.isFollow}}">
+            关注
+        </view>
+        <view class="followed-container" bind:tap="followUser" data-behaviour="-1" wx:else>
+            已关注
+        </view>
+    </view>
+    <view class="vote-container" wx:if="{{articleInfo.votes}}">
+        <view class="vote-image">
+            <block wx:for="{{articleInfo.votes}}" wx:if="{{index<7}}" wx:key="">
+                <view class="vote-user">
+                    <image class="" src="{{item.avatarUrl}}" mode="scaleToFill"></image>
+                </view>
+            </block>
+        </view>
+        <view class="no-result" wx:if="{{articleInfo.likes==0}}">
+            还没有人点赞，你将是第一个
+        </view>
+        <view class="vote-count">
+            赞 {{articleInfo.likes}}
+        </view>
+    </view>
+</view>
+<v-comment class="comment-container" commentInfo="{{articleInfo.comments}}" commentsCount="{{articleInfo.comments_count}}" />
+<view class=" post-container" wx:if="{{!posting}}">
+    <view bind:tap="onFakePost" class="post-fake">
+        <text>在这里发表评论哦</text>
+    </view>
+    <view class="like-container">
+        <v-like bind:like="onLike" class="like" like="{{articleInfo.isVote}}" count="{{articleInfo.likes}}" />
+    </view>
+</view>
+<view class="posting-container" wx:if="{{posting}}">
+    <input focus="true" data-name='content' value="{{content}}" bindinput="contentChange" class="post" placeholder="编辑你的评论吧"></input>
+    <view class="submit" hover-class="submit-on" bind:tap="submit">发送</view>
+</view>
+<v-mask wx:if="{{posting}}" bind:tap="cancle" />

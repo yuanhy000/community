@@ -1,0 +1,73 @@
+<view class="question-container" bind:tap="onQuestion">
+    <image class="question-image" src="/images/article/comments-on.png" mode="scaleToFill"></image>
+    <view class="question-title">话题：{{answerInfo.questions.title}}</view>
+    <image class="question-select" src="/images/user/right.png" mode="scaleToFill"></image>
+</view>
+<view class="article-container">
+    <view class="author-container">
+        <view class="author-info">
+            <image class="author-image" mode="scaleToFill" src="{{answerInfo.users.avatarUrl}}">
+            </image>
+            <view class="author-other">
+                <view class="author-detail">
+                    <view class="author-name">
+                        {{answerInfo.users.nickname}}
+                    </view>
+                    <image class="author-sex" mode="scaleToFill" src="/images/article/boy.png" wx:if="{{answerInfo.users.sex == 1}}">
+                    </image>
+                </view>
+                <view class="time">
+                    {{answerInfo.created_at}}
+                </view>
+            </view>
+            <image class="" mode="scaleToFill" src="/images/article/girl.png" wx:if="{{answerInfo.users.sex == 0}}">
+            </image>
+        </view>
+        <view class="follow-container" bind:tap="followUser" data-behaviour="1" wx:if="{{!answerInfo.isFollow}}">
+            关注
+        </view>
+        <view class="followed-container" bind:tap="followUser" data-behaviour="-1" wx:else>
+            已关注
+        </view>
+    </view>
+    <text class="content-container" wx:if="{{answerInfo.content}}">{{answerInfo.content}}</text>
+    <view class="image-container">
+        <block wx:for="{{answerInfo.images}}" wx:if="{{index < 9}}" wx:key="">
+            <image class="image-item" mode="aspectFill" src="{{item.url}}">
+            </image>
+        </block>
+        <image class="image-else">
+        </image>
+        <image class="image-else">
+        </image>
+    </view>
+    <view class="vote-container" wx:if="{{answerInfo.votes}}">
+        <view class="vote-image">
+            <block wx:for="{{answerInfo.votes}}" wx:if="{{index<7}}" wx:key="">
+                <view class="vote-user">
+                    <image class="" src="{{item.avatarUrl}}" mode="scaleToFill"></image>
+                </view>
+            </block>
+        </view>
+        <view class="no-result" wx:if="{{answerInfo.likes==0}}">
+            还没有人点赞，你将是第一个
+        </view>
+        <view class="vote-count">
+            赞 {{answerInfo.likes}}
+        </view>
+    </view>
+</view>
+<v-comment class="comment-container" commentInfo="{{answerInfo.comments}}" commentsCount="{{answerInfo.comments_count}}" />
+<view class="post-container" wx:if="{{!posting}}">
+    <view bind:tap="onFakePost" class="post-fake">
+        <text>在这里发表评论哦</text>
+    </view>
+    <view class="like-container">
+        <v-like bind:like="onLike" class="like" like="{{answerInfo.isVote}}" count="{{answerInfo.likes}}" />
+    </view>
+</view>
+<view class="posting-container" wx:if="{{posting}}">
+    <input focus="true" data-name='content' value="{{content}}" bindinput="contentChange" class="post" placeholder="编辑你的评论吧"></input>
+    <view class="submit" hover-class="submit-on" bind:tap="submit">发送</view>
+</view>
+<v-mask wx:if="{{posting}}" bind:tap="cancle" />

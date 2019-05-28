@@ -1,0 +1,66 @@
+<view class="article-container">
+    <view class="author-container">
+        <view class="author-info" bind:tap="onUser" data-id="{{articleInfo.users.id}}">
+            <image class="author-image" mode="scaleToFill" src="{{articleInfo.users.avatarUrl}}">
+            </image>
+            <view class="author-other">
+                <view class="author-detail">
+                    <view class="author-name">
+                        {{articleInfo.users.nickname}}
+                    </view>
+                    <image class="author-sex" mode="scaleToFill" src="/images/article/boy.png" wx:if="{{articleInfo.users.sex == 1}}">
+                    </image>
+                </view>
+                <view class="time">
+                    {{articleInfo.created_at}}
+                </view>
+            </view>
+        </view>
+        <view bind:tap="followUser" class="follow-container" data-behaviour="1" wx:if="{{!articleInfo.isFollow}}">
+            关注
+        </view>
+        <view bind:tap="followUser" class="followed-container" data-behaviour="-1" wx:else="">
+            已关注
+        </view>
+    </view>
+    <view bind:tap="onArticle">
+        <text class="content-container" wx:if="{{articleInfo.content && articleInfo.type != 'Video'}}">{{articleInfo.content}}</text>
+        <view class="image-container">
+            <block wx:for="{{articleInfo.images}}" wx:if="{{index < 9}}" wx:key="">
+                <image class="image-item" mode="aspectFill" src="{{item.url}}">
+                </image>
+            </block>
+            <image class="image-else"></image>
+            <image class="image-else"></image>
+        </view>
+        <view class="video-container" wx:if="{{articleInfo.videos[0]}}">
+            <video class="video-item" poster="{{articleInfo.videos[0].video_cover}}" src="{{articleInfo.videos[0].video_url}}">
+            </video>
+        </view>
+        <text class="content-container" wx:if="{{articleInfo.content && articleInfo.type == 'Video'}}">{{articleInfo.title}}</text>
+    </view>
+    <view class="topic-container" wx:if="{{articleInfo.topics}}" data-id="{{articleInfo.topics[0].id}}" bind:tap="onTopic">
+        <view class="topic-name">
+            {{articleInfo.topics[0].name}}
+        </view>
+    </view>
+    <view class="operation-container">
+        <view class="item-container" hover-class="item-container-hover" bind:tap="voteFor" data-id="{{articleInfo.id}}">
+            <v-like like="{{articleInfo.isVote}}" count="{{articleInfo.likes}}" />
+        </view>
+        <view class="item-container" hover-class="item-container-hover" bind:tap="onArticle">
+            <image class="operation-image" mode="scaleToFill" src="/images/article/comments-on.png">
+            </image>
+            <view class="item-counts">
+                {{articleInfo.comments_count}}
+            </view>
+        </view>
+        <button open-type="share" data-type="{{articleInfo.type}}" data-articleID="{{articleInfo.id}}" class="item-button" hover-class="item-container-hover">
+            <image class="operation-image" mode="scaleToFill" src="/images/article/share.png">
+            </image>
+            <view class="item-counts">
+                分享
+            </view>
+        </button>
+    </view>
+</view>

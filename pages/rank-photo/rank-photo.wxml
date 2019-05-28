@@ -1,0 +1,51 @@
+<view class="home-container">
+    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" style="height:{{swiperHeight}}px">
+        <swiper-item>
+            <view class="item-container">
+                <view class="photo-container">
+                    <block wx:for="{{photoList}}" wx:key="">
+                        <view class="photo-item">
+                            <image class="photo-content" src="{{item.images[0].url}}" mode="aspectFill" bind:tap="onPhoto" data-id="{{item.id}}"></image>
+                            <view class="item-info">
+                                <image class="photo-user" src="{{item.users.avatarUrl}}" mode="scaleToFill"></image>
+                                <view class="user-name">
+                                    {{item.users.nickname}}
+                                </view>
+                                <v-like bind:like="onLike" data-id="{{item.id}}" class="like" like="{{item.isVote}}" count="{{item.likes}}" />
+                            </view>
+                        </view>
+                    </block>
+                    <image class="image-else"></image>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container">
+                <view class="photo-container">
+                    <block wx:for="{{photoList}}" wx:key="">
+                        <view class="photo-item">
+                            <image class="photo-content" src="{{item.images[0].url}}" mode="aspectFill" bind:tap="onPhoto" data-id="{{item.id}}"></image>
+                            <view class="item-info">
+                                <image class="photo-user" src="{{item.users.avatarUrl}}" mode="scaleToFill"></image>
+                                <view class="user-name">
+                                    {{item.users.nickname}}
+                                </view>
+                                <v-like bind:like="onLike" data-id="{{item.id}}" class="like" like="{{item.isVote}}" count="{{item.likes}}" />
+                            </view>
+                        </view>
+                    </block>
+                    <image class="image-else"></image>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "v-loading": "/components/loading/index",
+        "v-article": "/components/article/index",
+        "v-question": "/components/question/index",
+        "v-answer": "/components/answer/index",
+        "v-button": "/components/image-button/index"
+    },
+    "navigationBarTitleText": "用户首页",
+    "enablePullDownRefresh": false
+}

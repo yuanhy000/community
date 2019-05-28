@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "v-loading": "/components/loading/index",
+        "v-answer": "/components/answer/index"
+    },
+    "navigationBarTitleText": "话题详情"
+
+}

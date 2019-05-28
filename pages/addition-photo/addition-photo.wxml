@@ -1,0 +1,26 @@
+<view class="addition-container" wx:if="{{!chooseTopic}}">
+    <view class="addition-title">
+        <input bindinput="titleChange" class="addition-input" data-name="title" focus="{{focus}}" placeholder="标题必不可少" value="{{title}}"/>
+    </view>
+    <view class="addition-content">
+        <textarea bindinput="contentChange" class="addition-input" data-name="content" placeholder="输入想要分享的内容" value="{{content}}">
+        </textarea>  
+    </view>
+    <v-selectImage bind:getImageList="getImageList" imageNumber="{{selectImageNumber}}" isSelect="{{isFirst?'':true}}" selectImageList="{{selectImageList}}">
+    </v-selectImage>
+    <view bind:tap="changeTopic" class="choose-topic">
+        <view class="choose-title">
+            选择主题
+        </view>
+        <view class="topic-name" wx:if="{{confirmTopic}}">
+            {{topicInfo.name}}
+        </view>
+        <image class="right" mode="aspectFit" src="/images/user/right.png">
+        </image>
+    </view>
+    <view bind:tap="submit" class="submit" hover-class="on-submit">
+        发布
+    </view>
+</view>
+<v-topic bind:cancel="cancel" bind:getSelectTopic="getSelectTopic" more="{{more}}" wx:if="{{chooseTopic}}">
+</v-topic>

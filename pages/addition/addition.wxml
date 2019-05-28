@@ -1,0 +1,62 @@
+<view class="addition-container">
+    <view class="addition-items-left" hover-class="items-hover" bind:tap="additionDaliy">
+        <view class="img-box">
+            <image class="addition-img" mode="aspectFit" src="/images/addition/addition-daily.svg">
+            </image>
+        </view>
+        <view class="name-box">
+            <view class="items-name">发布日常</view>
+            <view class="items-info">
+                <view class="items-number">{{ArticleCountInfo.dailyCount}} 条动态</view>
+                <view class="items-number">{{ArticleCountInfo.dailyPeople}} 人参与</view>
+            </view>
+        </view>
+        <image class="right" mode="aspectFit" src="/images/user/right.png">
+        </image>
+    </view>
+    <view class="addition-items-right" hover-class="items-hover" bind:tap="additionPhoto">
+        <view class="img-box">
+            <image class="addition-img" mode="aspectFit" src="/images/addition/addition-photo.svg">
+            </image>
+        </view>
+        <view class="name-box">
+            <view class="items-name">发布摄影</view>
+            <view class="items-info">
+                <view class="items-number">{{ArticleCountInfo.photoCount}} 条动态</view>
+                <view class="items-number">{{ArticleCountInfo.photoPeople}} 人参与</view>
+            </view>
+        </view>
+        <image class="right" mode="aspectFit" src="/images/user/left.png">
+        </image>
+    </view>
+    <view class="addition-items-left" hover-class="items-hover" bind:tap="additionVideo">
+        <view class="img-box">
+            <image class="addition-img" mode="aspectFit" src="/images/addition/addition-video.svg">
+            </image>
+        </view>
+        <view class="name-box">
+            <view class="items-name">发布视频</view>
+            <view class="items-info">
+                <view class="items-number">{{ArticleCountInfo.videoCount}} 条动态</view>
+                <view class="items-number">{{ArticleCountInfo.videoPeople}} 人参与</view>
+            </view>
+        </view>
+        <image class="right" mode="aspectFit" src="/images/user/right.png">
+        </image>
+    </view>
+    <view class="addition-items-right" hover-class="items-hover" bind:tap="additionQuestion">
+        <view class="img-box">
+            <image class="addition-img" mode="aspectFit" src="/images/addition/addition-question.svg">
+            </image>
+        </view>
+        <view class="name-box">
+            <view class="items-name">发布话题</view>
+            <view class="items-info">
+                <view class="items-number">{{ArticleCountInfo.questionCount}} 条动态</view>
+                <view class="items-number">{{ArticleCountInfo.questionPeople}} 人参与</view>
+            </view>
+        </view>
+        <image class="right" mode="aspectFit" src="/images/user/left.png">
+        </image>
+    </view>
+</view>

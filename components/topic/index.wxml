@@ -1,0 +1,25 @@
+<view class="topic-container">
+    <view class="search-container">
+        <view class="search-box">
+            <image class="icon" src="../../images/addition/search.png"></image>
+            <input bindinput="inputChange" data-name='form.base.name' placeholder-class="in-bar" placeholder="搜索主题" class="bar" auto-focus="true" value="{{form.base.name}}"></input>
+            <!-- <image bind:tap="onDelete" class="cancel-img" src="../../images/addition/cancel.png"></image> -->
+        </view>
+        <view class="cancel" bind:tap="cancelChoose">取消</view>
+    </view>
+    <view class="topic-box">
+        <block wx:for="{{topicInfo}}" wx:key="">
+            <view wx:if="{{!search}}" class="topic-item" data-id="{{item.id}}" bind:tap="chooseTopic">
+                <image class="topic-image" src="{{item.image.url}}"></image>
+                <view class="item-info">
+                    <view class="topic-title">{{item.name}}</view>
+                    <view class="topic-description">{{item.description}}</view>
+                </view>
+            </view>
+            <v-highlight wx:if="{{search}}" datas="{{item}}" keyName="{{keyName}}" bind:getSelectTopic="getSelectTopic"></v-highlight>
+        </block>
+        <view wx:if="{{search&&!searchResult}}" class="no-result">没有搜索到该主题</view>
+    </view>
+    <v-loading class="loading" wx:if="{{loading}}" />
+    <view class="no-more" wx:if="{{isAll && !search}}">没有更多主题了</view>
+</view>

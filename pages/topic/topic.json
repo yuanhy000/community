@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "v-loading": "/components/loading/index",
+        "v-article": "/components/article/index",
+        "v-answer": "/components/answer/index"
+    }
+}

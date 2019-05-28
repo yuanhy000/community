@@ -1,0 +1,119 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+}
+
+.swiper-tab {
+    width: 100%;
+    height: 110rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    border-bottom: 2rpx solid #ccc;
+    position: fixed;
+    z-index: 999;
+    background: #f3f3f3;
+}
+
+.swiper-tab-item {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    color: #434343;
+    font-size: 28rpx;
+}
+
+.active {
+    color: #6d70d3;
+    border-bottom: 5rpx solid #6d70d3;
+}
+
+swiper {
+    text-align: center;
+    background-color: #fff;
+    height: 12000rpx;
+    /*min-height: 200rpx !important;*/
+    padding-top: 110rpx;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    width: 100%;
+    min-height: 1000rpx;
+    background-color: #fff;
+}
+
+.photo-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40rpx 20rpx 10rpx 20rpx;
+}
+
+.photo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 46%;
+    margin-bottom: 30rpx;
+}
+
+.photo-content {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    height: 300rpx;
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: space-around;*/
+    align-items: center;
+    height: 80rpx;
+    border: 1rpx #eee solid;
+    width: 99%;
+    background-color: #f3f3f3;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.photo-user {
+    display: flex;
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    margin: auto 15rpx auto 10rpx;
+}
+
+.user-name {
+    font-size: 26rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 44%;
+}
+
+.image-else {
+    display: flex;
+    height: 0;
+    width: 46%;
+}
+
+.loading-box {
+    /*display: flex;
+    flex-direction: row;
+    width: 100%;*/
+}
+
+.loading {
+    margin: 20rpx auto;
+}

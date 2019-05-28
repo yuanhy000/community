@@ -1,0 +1,169 @@
+<view class="user-container">
+    <view class="head-container">
+        <image class="head-image" mode="scaleToFill" src="../../images/default/default.jpg">
+        </image>
+        <view class="user-info">
+            <image class="user-image" mode="scaleToFill" src="{{userInfo.avatarUrl}}">
+            </image>
+            <view class="user-base">
+                <view class="user-name">
+                    {{userInfo.nickname}}
+                </view>
+                <image class="user-sex" mode="scaleToFill" src="../../images/article/boy.png" wx:if="{{userInfo.sex == 1}}">
+                </image>
+                <image class="user-sex" mode="scaleToFill" src="../../images/article/girl.png" wx:if="{{userInfo.sex == 0}}">
+                </image>
+            </view>
+            <view class="user-related">
+                <view class="user-attention">
+                    关注： {{userInfo.attention}}
+                </view>
+                <view class="user-follower">
+                    粉丝： {{userInfo.follower}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper-view class="{{scroll_top>=userHeight ? 'swiper-tab-fixed' : ''}}" scroll-with-animation="true" scroll-x="true" wx:if="{{scroll_top>=userHeight}}">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper bindchange="swiperTab" class="swiper" current="{{currentTab}}" duration="400" style="height:{{currentTab == 0 ? swiperArticleHeight : swiperFollowHeight}}px">
+        <swiper-item>
+            <view class="item-container-article">
+                <view class="sub-tab">
+                    <block wx:for="{{subTabArticleInfo}}" wx:key="">
+                        <view class="sub-tab-item-container" bindtap="clickArticleSubTab" data-current="{{index}}">
+                            <view class="sub-tab-item {{currentArticleSubTab==index?'sub-active':''}}" data-current="{{index}}">
+                                {{item}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="sub-content">
+                    <view wx:if="{{dailyList.length!=0}}">
+                        <block wx:for="{{dailyList}}" wx:key="">
+                            <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" data-type="Daily" />
+                        </block>
+                    </view>
+                    <view class="no-result" wx:if="{{dailyList.length==0 && articleResult && currentArticleSubTab==0}}">
+                        暂无内容
+                    </view>
+                    <view wx:if="{{photoList.length!=0}}">
+                        <block wx:for="{{photoList}}" wx:key="">
+                            <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" data-type="Photo" />
+                        </block>
+                    </view>
+                    <view class="no-result" wx:if="{{photoList.length==0 && articleResult && currentArticleSubTab==1}}">
+                        暂无内容
+                    </view>
+                    <view wx:if="{{videoList.length!=0}}">
+                        <block wx:for="{{videoList}}" wx:key="">
+                            <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" data-type="Video" />
+                        </block>
+                    </view>
+                    <view class="no-result" wx:if="{{videoList.length==0 && articleResult && currentArticleSubTab==2}}">
+                        暂无内容
+                    </view>
+                    <view wx:if="{{answerList.length!=0}}">
+                        <block wx:for="{{answerList}}" wx:key="">
+                            <v-answer answerInfo="{{item}}" bind:onAnswer="onAnswerDetail" />
+                        </block>
+                    </view>
+                    <view class="no-result" wx:if="{{answerList.length==0 && articleResult && currentArticleSubTab==3}}">
+                        暂无内容
+                    </view>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-follow">
+                <view class="sub-tab">
+                    <block wx:for="{{subTabFollowInfo}}" wx:key="">
+                        <view class="sub-tab-item-container" bindtap="clickFollowSubTab" data-current="{{index}}">
+                            <view class="sub-tab-item {{currentFollowSubTab==index?'sub-active':''}}" data-current="{{index}}">
+                                {{item}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="sub-content">
+                    <view class="topic-container" wx:if="{{topicList.length!=0}}">
+                        <block wx:for="{{topicList}}" wx:key="">
+                            <view class="topic-item" data-id="{{item.id}}" bind:tap="onTopic">
+                                <image class="topic-image" src="{{item.image.url}}"></image>
+                                <view class="item-info">
+                                    <view class="topic-title">{{item.name}}</view>
+                                    <view class="topic-description">{{item.description}}</view>
+                                </view>
+                                <image class="topic-select" src="/images/user/right.png" mode="scaleToFill"></image>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="no-result" wx:if="{{topicList.length==0 && articleResult && currentFollowSubTab==0}}">
+                        还没有关注哦
+                    </view>
+                    <view class="questionList-container" wx:if="{{questionList.length!=0}}">
+                        <block wx:for="{{questionList}}" wx:key="">
+                            <v-question questionInfo="{{item}}" />
+                        </block>
+                        <view wx:if="{{questionList.length == 0 && searchResult}}" class="no-result">没有搜索到该话题</view>
+                    </view>
+                    <view class="no-result" wx:if="{{questionList.length==0 && articleResult && currentFollowSubTab==1}}">
+                        还没有关注哦
+                    </view>
+                    <view class="user-container" wx:if="{{userList.length!=0}}">
+                        <block wx:for="{{userList}}" wx:key="">
+                            <view class="topic-item" data-id="{{item.id}}" bind:tap="onUser">
+                                <image class="userList-image" src="{{item.avatarUrl}}"></image>
+                                <view class="userList-name">
+                                    {{item.nickname}}
+                                </view>
+                                <view bind:tap="followUser" class="follow-container" data-behaviour="1" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{!item.isFollow}}">
+                                    关注
+                                </view>
+                                <view bind:tap="followUser" class="followed-container" data-behaviour="-1" data-id="{{item.id}}" data-index="{{index}}" wx:else="">
+                                    已关注
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="no-result" wx:if="{{userList.length==0 && articleResult && currentFollowSubTab==2}}">
+                        还没有关注哦
+                    </view>
+                    <view class="user-container" wx:if="{{fansList.length!=0}}">
+                        <block wx:for="{{fansList}}" wx:key="">
+                            <view class="topic-item">
+                                <image class="userList-image" src="{{item.avatarUrl}}" data-id="{{item.id}}" bind:tap="onUser"></image>
+                                <view class="userList-name" data-id="{{item.id}}" bind:tap="onUser">
+                                    {{item.nickname}}
+                                </view>
+                                <view bind:tap="followUser" class="follow-container" data-behaviour="1" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{!item.isFollow}}">
+                                    关注
+                                </view>
+                                <view bind:tap="followUser" class="followed-container" data-behaviour="-1" data-id="{{item.id}}" data-index="{{index}}" wx:else="">
+                                    已关注
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view class="no-result" wx:if="{{fansList.length==0 && articleResult && currentFollowSubTab==3}}">
+                    还没有关注哦
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

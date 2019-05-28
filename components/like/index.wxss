@@ -1,0 +1,21 @@
+/* components/like/index.wxss */
+.container{
+	display: inline-flex;
+	flex-direction: row;
+	padding: 10rpx;
+	width: 90rpx;
+}
+
+.operation-image {
+    display: flex;
+    width: 30rpx;
+    height: 30rpx;
+    margin: auto 10rpx;
+}
+
+.item-counts {
+    display: flex;
+    font-size: 28rpx;
+    color: #666;
+    margin: auto 10rpx;
+}

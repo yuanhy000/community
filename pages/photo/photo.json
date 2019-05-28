@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "v-like": "/components/like/index",
+        "v-mask": "/components/mask/index",
+        "v-comment": "/components/comment/index"
+    }
+}

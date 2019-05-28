@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "v-loading": "/components/loading/index"
+    },
+    "navigationBarTitleText": "我的关注"
+
+}

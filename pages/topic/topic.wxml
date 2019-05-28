@@ -1,0 +1,67 @@
+<view class="topic-container">
+    <view class="head-container">
+        <image class="head-image" mode="scaleToFill" src="{{topicInfo.image.url}}">
+        </image>
+        <view class="topic-info">
+            <image class="topic-image" mode="scaleToFill" src="{{topicInfo.image.url}}">
+            </image>
+            <view class="detail-info">
+                <view class="topic-title">
+                    {{topicInfo.name}}
+                </view>
+                <view class="topic-other">
+                    <view class="likes">
+                        {{topicInfo.followers_count}} 人关注
+                    </view>
+                    <view class="answer-count">
+                        {{topicInfo.article_count}} 条内容
+                    </view>
+                </view>
+            </view>
+            <view bind:tap="followTopic" class="follow-container" data-behaviour="1" wx:if="{{!topicInfo.isFollow}}">
+                关注
+            </view>
+            <view bind:tap="followTopic" class="followed-container" data-behaviour="-1" wx:else="">
+                已关注
+            </view>
+        </view>
+        <view class="description-container">
+            <view class="topic-description">{{topicInfo.description}}</view>
+        </view>
+    </view>
+    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper-view wx:if="{{scroll_top>=topicHeight}}" class="{{scroll_top>=topicHeight ? 'swiper-tab-fixed' : ''}}" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" style="height:{{currentTab == 0 ? swiperHeight : swiperAnswerHeight}}px">
+        <swiper-item>
+            <view class="item-container">
+                <block wx:for="{{articleList}}" wx:key="">
+                    <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" />
+                </block>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-answer">
+                <block wx:for="{{answerList}}" wx:key="">
+                    <v-answer answerInfo="{{item}}" bind:onAnswer="onAnswerDetail" />
+                </block>
+                <v-loading class="loading" wx:if="{{loading}}" />
+                <!-- <view class="no-result" wx:else>
+                    这个话题还没有任何回答哦，快成为第一个
+                </view> -->
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

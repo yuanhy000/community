@@ -1,0 +1,9 @@
+<view class="topic-item" data-id="{{topic.id}}" bind:tap="chooseTopic">
+    <image class="topic-image" src="{{topic.image.url}}"></image>
+    <view class="item-info">
+        <view class="item-title-box">
+            <view class="topic-title {{item == keyName ? 'highlight' : '' }}" wx:for="{{topicName}}" wx:key="">{{item}}</view>
+        </view>
+        <view class="topic-description">{{topic.description}}</view>
+    </view>
+</view>

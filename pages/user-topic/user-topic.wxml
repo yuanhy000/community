@@ -1,0 +1,13 @@
+<view class="topic-container">
+    <v-loading class="loading" wx:if="{{loading}}" />
+    <block wx:for="{{topicList}}" wx:key="">
+        <view class="topic-item" data-id="{{item.id}}" bind:tap="onTopic">
+            <image class="topic-image" src="{{item.image.url}}"></image>
+            <view class="item-info">
+                <view class="topic-title">{{item.name}}</view>
+                <view class="topic-description">{{item.description}}</view>
+            </view>
+            <image class="topic-select" src="/images/user/right.png" mode="scaleToFill"></image>
+        </view>
+    </block>
+</view>

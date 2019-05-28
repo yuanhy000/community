@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/discovery/discovery",
+    "pages/home/home",
+    "pages/index/index",
+    "pages/store/store",
+    "pages/user/user",
+    "pages/submit/submit",
+    "pages/logs/logs",
+    "pages/addition/addition",
+    "pages/addition-answer/addition-answer",
+    "pages/addition-daily/addition-daily",
+    "pages/addition-photo/addition-photo",
+    "pages/addition-video/addition-video",
+    "pages/addition-question/addition-question",
+    "pages/daily/daily",
+    "pages/video/video",
+    "pages/photo/photo",
+    "pages/topic/topic",
+    "pages/question/question",
+    "pages/answer/answer",
+    "pages/new/new",
+    "pages/rank-photo/rank-photo",
+    "pages/search/search",
+    "pages/user-topic/user-topic",
+    "pages/user-detail/user-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6d70d3",
+    "navigationBarTitleText": "轻社区",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#6d70d3",
+    "backgroundColor": "#ffffff",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "selectedIconPath": "/images/tab/discovery-on.png",
+        "pagePath": "pages/discovery/discovery",
+        "text": "发现",
+        "iconPath": "/images/tab/discovery.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/home-on.png",
+        "pagePath": "pages/home/home",
+        "text": "广场",
+        "iconPath": "/images/tab/home.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/addition-on.png",
+        "pagePath": "pages/addition/addition",
+        "text": "发布",
+        "iconPath": "/images/tab/addition.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/search-on.png",
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "/images/tab/search.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/user-on.png",
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/tab/user.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

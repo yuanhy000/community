@@ -1,0 +1,12 @@
+<view class="video-container">
+    <view class="select-video" wx:if="{{!isSelect}}">
+        <image bindtap="selectVideo" class="select-video-image" mode="scaleToFill" src="/images/addition/select-video.png">
+        </image>
+    </view>
+    <view class="select-video" wx:if="{{isSelect}}">
+        <video poster="{{videoInfo.videoCoverUrl}}" src="{{tempFilePath}}">
+        </video>
+        <icon bindtap="closeOption" class="icon" type="clear">
+        </icon>
+    </view>
+</view>

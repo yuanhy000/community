@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "v-topic": "/components/topic/index",
+        "v-selectImage": "/components/select-image/index"
+    },
+    "navigationBarTitleText": "发布日常"
+}

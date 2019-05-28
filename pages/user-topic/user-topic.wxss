@@ -1,0 +1,48 @@
+.topic-container{
+    display: flex;
+    flex-direction: column;
+}
+.topic-item {
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx 30rpx;
+    background-color: #fff;
+    border-bottom: #ddd 1rpx solid;
+    align-items: center;
+}
+
+.topic-image {
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 20rpx;
+    margin: 0 30rpx 0 0;
+}
+
+.topic-title {
+    font-size: 30rpx;
+    color: #222;
+    display: flex;
+    margin-left: 0;
+    /*color: #4a4f70;*/
+    margin-bottom: 20rpx;
+    letter-spacing: 2rpx;
+}
+
+.topic-select {
+    display: flex;
+    width: 40rpx;
+    height: 40rpx;
+    justify-content: flex-start;
+    margin: auto;
+    margin-right: 0;
+}
+
+.topic-description {
+    font-size: 26rpx;
+    color: #989dbb;
+}
+
+.loading {
+    display: flex;
+    margin: 100rpx auto;
+}

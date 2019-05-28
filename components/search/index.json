@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "o-product": "/components/product/index",
+        "o-tag": "/components/tag/index",
+        "o-loading": "/components/loading/index"
+    }
+}

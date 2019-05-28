@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve" width="64" height="64">
+<linearGradient id="SVGID_1__44783" gradientUnits="userSpaceOnUse" x1="43" y1="22.3333" x2="43" y2="29.1748" spreadMethod="reflect">
+	<stop offset="0" style="stop-color:#6DC7FF"/>
+	<stop offset="1" style="stop-color:#E6ABFF"/>
+</linearGradient>
+<path style="fill:url(#SVGID_1__44783);" d="M46,29l-6-6h5c0.552,0,1,0.448,1,1V29z"/>
+<linearGradient id="SVGID_2__44783" gradientUnits="userSpaceOnUse" x1="32" y1="9.75" x2="32" y2="54.1811" spreadMethod="reflect">
+	<stop offset="0" style="stop-color:#1A6DFF"/>
+	<stop offset="1" style="stop-color:#C822FF"/>
+</linearGradient>
+<path style="fill:url(#SVGID_2__44783);" d="M56,31h-6v-9c0-1.654-1.346-3-3-3h-7v-2h-2.162l-0.932-3.73C36.572,11.933,35.378,11,34,11H22  c-1.378,0-2.572,0.933-2.905,2.269L18.162,17H16v2H9c-1.654,0-3,1.346-3,3v28c0,1.654,1.346,3,3,3h23h2h22c1.103,0,2-0.897,2-2V39  v-2v-4C58,31.897,57.103,31,56,31z M56,35H32v-2h24V35z M56,41.91v4.181c-2.507,0.423-4.486,2.403-4.91,4.91H36.91  c-0.423-2.507-2.403-4.486-4.91-4.91V41.91c2.507-0.423,4.486-2.403,4.91-4.91H51.09C51.514,39.507,53.493,41.486,56,41.91z M32,37  h2.858c-0.364,1.399-1.459,2.494-2.858,2.858V39V37z M21.035,13.754C21.146,13.31,21.542,13,22,13h12  c0.458,0,0.854,0.31,0.966,0.754L35.777,17H34v2H22v-2h-1.777L21.035,13.754z M9,51c-0.552,0-1-0.449-1-1V37h6c0,1.103,0.897,2,2,2  h2c1.103,0,2-0.897,2-2h8v-2h-6v-1c0-1.654-1.346-3-3-3h-4c-1.654,0-3,1.346-3,3v1H8V22c0-0.551,0.448-1,1-1h38c0.552,0,1,0.449,1,1  v9H32c-1.103,0-2,0.897-2,2v4v2v12H9z M20,35h-6v-1c0-0.551,0.448-1,1-1h4c0.552,0,1,0.449,1,1V35z M32,51v-2.858  c1.399,0.364,2.494,1.459,2.858,2.858H34H32z M53.142,51c0.364-1.399,1.459-2.494,2.858-2.858V51H53.142z M56,39.858  c-1.399-0.364-2.494-1.459-2.858-2.858H56v2V39.858z"/>
+<linearGradient id="SVGID_3__44783" gradientUnits="userSpaceOnUse" x1="44" y1="9.75" x2="44" y2="54.1811" spreadMethod="reflect">
+	<stop offset="0" style="stop-color:#1A6DFF"/>
+	<stop offset="1" style="stop-color:#C822FF"/>
+</linearGradient>
+<path style="fill:url(#SVGID_3__44783);" d="M44,48c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4S41.794,48,44,48z M44,42  c1.103,0,2,0.897,2,2s-0.897,2-2,2s-2-0.897-2-2S42.897,42,44,42z"/>
+</svg>

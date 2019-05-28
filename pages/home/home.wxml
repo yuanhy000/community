@@ -1,0 +1,52 @@
+<view class="home-container">
+    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" style="height:{{currentTab == 0 ? swiperFollowHeight : (currentTab == 1 ? swiperRecommendHeight : swiperUpdateHeight)}}px">
+        <swiper-item>
+            <view class="item-container-follow">
+                <view wx:if="{{articleFollowList.length!=0}}">
+                    <block wx:for="{{articleFollowList}}" wx:key="">
+                        <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" bind:onShare="onShare" />
+                    </block>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+                <view class="no-result" wx:if="{{articleFollowList.length==0 && articleResult}}">
+                    你还没有关注任何人
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-recommend">
+                <view class="follow-topic-container" wx:if="{{topicList.length !=0}}">
+                    <block wx:for="{{topicList}}" wx:key="id" wx:if="{{index<4}}">
+                        <view class="topic-item" data-id="{{item.id}}" bind:tap="onTopic">
+                            <image class="topic-image" src="{{item.image.url}}" mode="scaleToFill"></image>
+                            <view class="topic-title">{{item.name}}</view>
+                        </view>
+                    </block>
+                    <view class="topic-item" bind:tap="onAllTopic">
+                        <image class="topic-image" src="../../images/article/all.png" mode="scaleToFill"></image>
+                        <view class="topic-title">全部关注</view>
+                    </view>
+                </view>
+                <block wx:for="{{articleRecommendList}}" wx:key="">
+                    <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" bind:onShare="onShare" />
+                </block>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-update">
+                <block wx:for="{{articleUpdateList}}" wx:key="">
+                    <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" bind:onShare="onShare" />
+                </block>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

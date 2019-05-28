@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "v-loading": "/components/loading/index",
+        "v-highlight": "/components/highlight-text/index"
+    }
+}

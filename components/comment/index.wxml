@@ -1,0 +1,33 @@
+<view class="comment-container">
+    <view class="comment-title">
+        全部评论（{{commentsCount}}）
+    </view>
+    <view class="no-result" wx:if="{{commentsCount==0}}">
+        暂无评论，精彩评论等你添加
+    </view>
+    <block wx:for="{{commentInfo}}" wx:key="">
+        <view class="item-container">
+            <view class="item-user">
+                <view class="user-container">
+                    <image class="user-image" mode="scaleToFill" src="{{item.users.avatarUrl}}">
+                    </image>
+                    <view class="user-info">
+                        <view class="user-name">
+                            {{item.users.nickname}}
+                        </view>
+                        <view class="comment-time">
+                            {{item.created_at}}
+                        </view>
+                    </view>
+                </view>
+                <view class="like-container">
+                    <v-like bind:like="onLike" class="like" count="{{item.likes}}" like="{{item.isVote}}" data-id="{{item.id}}">
+                    </v-like>
+                </view>
+            </view>
+            <view class="comment-content">
+                {{item.content}}
+            </view>
+        </view>
+    </block>
+</view>

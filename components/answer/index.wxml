@@ -1,0 +1,62 @@
+<view class="article-container">
+    <view class="question-container" bind:tap="onQuestion" wx:if="{{answerInfo.questions}}">
+        <image class="question-image" src="/images/article/comments-on.png" mode="scaleToFill"></image>
+        <view class="question-title">话题：{{answerInfo.questions.title}}</view>
+    </view>
+    <view class="author-container">
+        <view class="author-info" bind:tap="onUser" data-id="{{answerInfo.users.id}}">
+            <image class="author-image" mode="scaleToFill" src="{{answerInfo.users.avatarUrl}}">
+            </image>
+            <view class="author-other">
+                <view class="author-detail">
+                    <view class="author-name">
+                        {{answerInfo.users.nickname}}
+                    </view>
+                    <image class="author-sex" mode="scaleToFill" src="/images/article/boy.png" wx:if="{{answerInfo.users.sex == 1}}">
+                    </image>
+                </view>
+                <view class="time">
+                    {{answerInfo.created_at}}
+                </view>
+            </view>
+            <image class="" mode="scaleToFill" src="/images/article/girl.png" wx:if="{{answerInfo.users.sex == 0}}">
+            </image>
+        </view>
+        <view bind:tap="followUser" class="follow-container" data-behaviour="1" wx:if="{{!answerInfo.isFollow}}">
+            关注
+        </view>
+        <view bind:tap="followUser" class="followed-container" data-behaviour="-1" wx:else="">
+            已关注
+        </view>
+    </view>
+    <view bind:tap="onAnswer">
+        <view class="content-container" wx:if="{{answerInfo.content}}">{{answerInfo.content}}</view>
+        <view class="image-container">
+            <block wx:for="{{answerInfo.images}}" wx:if="{{index < 3}}" wx:key="">
+                <image class="image-item" mode="aspectFill" src="{{item.url}}">
+                </image>
+            </block>
+            <image class="image-else"></image>
+            <image class="image-else"></image>
+        </view>
+    </view>
+    <view class="operation-container">
+        <view class="item-container" hover-class="item-container-hover" data-id="{{answerInfo.id}}">
+            <v-like bind:like="onLike" like="{{answerInfo.isVote}}" count="{{answerInfo.likes}}" />
+        </view>
+        <view class="item-container" hover-class="item-container-hover" bind:tap="onAnswer">
+            <image class="operation-image" mode="scaleToFill" src="/images/article/comments-on.png">
+            </image>
+            <view class="item-counts">
+                {{answerInfo.comments_count}}
+            </view>
+        </view>
+        <button open-type="share" data-type="answer" data-articleID="{{answerInfo.id}}" class="item-button" hover-class="item-container-hover">
+            <image class="operation-image" mode="scaleToFill" src="/images/article/share.png">
+            </image>
+            <view class="item-counts">
+                分享
+            </view>
+        </button>
+    </view>
+</view>

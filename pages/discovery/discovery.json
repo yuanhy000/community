@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "v-like": "/components/like/index",
+        "v-article": "/components/article/index",
+        "v-question": "/components/question/index",
+        "v-loading": "/components/loading/index"
+    }
+}

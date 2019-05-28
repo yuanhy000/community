@@ -1,0 +1,79 @@
+<view class="search-page-container">
+    <view class="search-container">
+        <view class="search-box">
+            <image class="icon" src="../../images/addition/search.png"></image>
+            <input bind:confirm="onConfirm" placeholder-class="in-bar" placeholder="内容 / 话题 / 主题 / 用户" class="bar" auto-focus="true" value="{{name}}"></input>
+            <image bind:tap="onDelete" class="cancel-img" src="../../images/addition/cancel.png"></image>
+        </view>
+        <view class="cancel" bind:tap="onCancel">取消</view>
+    </view>
+    <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
+        <block wx:for="{{tabInfo}}" wx:key="">
+            <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
+                {{item}}
+            </view>
+        </block>
+    </swiper-view>
+    <swiper class="swiper" bindchange="swiperTab" current="{{currentTab}}" duration="400" style="height:{{currentTab == 0 ? swiperArticleHeight : (currentTab == 1 ? swiperQuestionHeight : (currentTab == 2 ? swiperTopicHeight : swiperUserHeight))}}px">
+        <swiper-item>
+            <view class="item-container-article">
+                <block wx:for="{{articleList}}" wx:key="">
+                    <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" />
+                </block>
+                <view wx:if="{{articleList.length == 0 && searchResult}}" class="no-result">没有搜索到该内容</view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-question">
+                <view class="questionList-container">
+                    <block wx:for="{{questionList}}" wx:key="">
+                        <v-question questionInfo="{{item}}" />
+                    </block>
+                    <view wx:if="{{questionList.length == 0 && searchResult}}" class="no-result">没有搜索到该话题</view>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-topic">
+                <view class="topic-container">
+                    <block wx:for="{{topicList}}" wx:key="">
+                        <view wx:if="{{!search}}" class="topic-item" data-id="{{item.id}}" bind:tap="onTopic">
+                            <image class="topic-image" src="{{item.image.url}}"></image>
+                            <view class="item-info">
+                                <view class="topic-title">{{item.name}}</view>
+                                <view class="topic-description">{{item.description}}</view>
+                            </view>
+                            <image class="topic-select" src="/images/user/right.png" mode="scaleToFill"></image>
+                        </view>
+                    </block>
+                    <view wx:if="{{topicList.length == 0 && searchResult}}" class="no-result">没有搜索到该主题</view>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="item-container-user">
+                <view class="user-container">
+                    <block wx:for="{{userList}}" wx:key="">
+                        <view wx:if="{{!search}}" class="topic-item">
+                            <image class="user-image" src="{{item.avatarUrl}}" data-id="{{item.id}}" bind:tap="onUser"></image>
+                            <view class="user-name" data-id="{{item.id}}" bind:tap="onUser">
+                                {{item.nickname}}
+                            </view>
+                            <view bind:tap="followUser" class="follow-container" data-behaviour="1" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{!item.isFollow}}">
+                                关注
+                            </view>
+                            <view bind:tap="followUser" class="followed-container" data-behaviour="-1" data-id="{{item.id}}" data-index="{{index}}" wx:else="">
+                                已关注
+                            </view>
+                        </view>
+                    </block>
+                    <view wx:if="{{userList.length == 0 && searchResult}}" class="no-result">没有搜索到该用户</view>
+                </view>
+                <v-loading class="loading" wx:if="{{loading}}" />
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
