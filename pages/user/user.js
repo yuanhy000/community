@@ -1,10 +1,8 @@
 import {
     UserModel
 } from '../../models/user.js'
-
 const User = new UserModel();
 Page({
-
     data: {
         authorized: false,
         userInfo: null,
@@ -35,12 +33,10 @@ Page({
         userHeight: 420,
         scroll_top: 0
     },
-
     onLoad: function(options) {
         this.userAuthorized();
         this.getUserInfoFromSever();
     },
-
     onGetUserInfo(event) {
         const userInfo = event.detail.userInfo
         console.log(userInfo)
@@ -49,17 +45,20 @@ Page({
                 userInfo: userInfo,
                 authorized: true,
             })
+            console.log(userInfo)
             User.submitUserInfo({
                 nickName: userInfo.nickName,
                 avatarUrl: userInfo.avatarUrl,
                 sex: userInfo.gender
+            }).then(res => {
+                this.getUserInfoFromSever();
             });
             this.getUserInfoFromSever();
         }
     },
-
     getUserInfoFromSever() {
         User.getUserInfo().then(res => {
+            console.log(res);
             this.setData({
                 userDetail: res,
                 userID: res.id
@@ -68,7 +67,6 @@ Page({
             this.getUserHeight();
         })
     },
-
     userAuthorized() {
         wx.getSetting({
             success: data => {
@@ -85,20 +83,17 @@ Page({
             }
         })
     },
-
     onPageScroll: function(e) {
         this.setData({
             'scroll_top': e.scrollTop
         })
     },
-
     onAnswerDetail(event) {
         let id = event.detail.id;
         wx.navigateTo({
             url: '/pages/answer/answer?id=' + id
         })
     },
-
     onTopic(event) {
         let topicID = event.currentTarget.dataset.id;
         wx.navigateTo({
@@ -121,16 +116,13 @@ Page({
                 url: '/pages/photo/photo?id=' + id
             })
         }
-
     },
-
     onUser(event) {
         let userID = event.currentTarget.dataset.id;
         wx.navigateTo({
             url: '/pages/user-detail/user-detail?id=' + userID
         })
     },
-
     getUserHeight() {
         const query = wx.createSelectorQuery()
         query.select('.head-container').boundingClientRect()
@@ -141,7 +133,6 @@ Page({
             })
         })
     },
-
     getUserInfo(userID) {
         User.getUserByID(userID).then(res => {
             this.setData({
@@ -149,7 +140,6 @@ Page({
             })
         })
     },
-
     getArticle: function(typeName, topicID) {
         if (this.isLocked()) {
             return
@@ -176,7 +166,6 @@ Page({
             }
         }
     },
-
     getFollow: function(typeName, topicID) {
         if (this.isLocked()) {
             return
@@ -203,7 +192,6 @@ Page({
             }
         }
     },
-
     setArticleInfo(res, type) {
         if (res.data.length > 0) {
             if (type == 'Daily') {
@@ -246,8 +234,6 @@ Page({
         this.getSwiperArticleHeight();
         this.data.pageIndex++;
     },
-
-
     setFollowInfo(res, type) {
         if (res.data.length > 0) {
             if (type == 'Topic') {
@@ -290,7 +276,6 @@ Page({
         this.getSwiperFollowHeight();
         this.data.pageIndex++;
     },
-
     getSwiperArticleHeight() {
         const query = wx.createSelectorQuery()
         query.select('.item-container-article').boundingClientRect()
@@ -301,8 +286,6 @@ Page({
             })
         })
     },
-
-
     getSwiperFollowHeight() {
         const query = wx.createSelectorQuery()
         query.select('.item-container-follow').boundingClientRect()
@@ -313,7 +296,6 @@ Page({
             })
         })
     },
-
     swiperTab: function(event) {
         let currentTab = event.detail.current;
         this.setData({
@@ -326,7 +308,6 @@ Page({
             this.getFollow('Topic', this.data.userID);
         }
     },
-
     clickTab: function(event) {
         if (this.data.currentTab === event.target.dataset.current) {
             return false;
@@ -336,7 +317,6 @@ Page({
             })
         }
     },
-
     clickArticleSubTab: function(event) {
         let currentTab = event.target.dataset.current;
         if (this.data.currentArticleSubTab === currentTab) {
@@ -364,7 +344,6 @@ Page({
             }
         }
     },
-
     clickFollowSubTab: function(event) {
         let currentTab = event.target.dataset.current;
         if (this.data.currentFollowSubTab === currentTab) {
@@ -396,24 +375,19 @@ Page({
     isLocked() {
         return this.data.loading ? true : false
     },
-
     locked() {
         this.data.loading = true;
         this.setData({
             loading: true
         })
     },
-
     unLocked() {
         this.data.loading = false;
         this.setData({
             loading: false
         })
     },
-    onPullDownRefresh: function() {
-
-    },
-
+    onPullDownRefresh: function() {},
     /**
      * 页面上拉触底事件的处理函数
      */
@@ -440,7 +414,6 @@ Page({
             }
         }
     },
-
     onShareAppMessage: function(res) {
         if (res.from === 'button') {
             let articleID = res.target.dataset.articleid;

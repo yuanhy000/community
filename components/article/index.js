@@ -2,7 +2,12 @@ import {
     UserModel
 } from '../../models/user.js'
 
+import {
+    ArticleModel
+} from '../../models/article.js'
+
 const User = new UserModel();
+const Article = new ArticleModel();
 
 Component({
     properties: {
@@ -19,18 +24,11 @@ Component({
     },
 
     methods: {
-        voteFor(event) {
-            const id = event.currentTarget.dataset.id
-            let index = 0;
-            if (this.properties.articleInfo.isVote) {
-                index = -1;
-            } else {
-                index = 1;
-            }
-            this.triggerEvent('voteFor', {
-                id: this.properties.articleInfo.id,
-                index: index
-            }, {});
+
+        onLike(event) {
+            let behavior = event.detail.behavior;
+            let index = behavior == 'like' ? 1 : -1;
+            Article.voteForArticle(this.data.articleInfo.id, index);
         },
 
         onArticle(event) {

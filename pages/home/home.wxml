@@ -11,7 +11,7 @@
             <view class="item-container-follow">
                 <view wx:if="{{articleFollowList.length!=0}}">
                     <block wx:for="{{articleFollowList}}" wx:key="">
-                        <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" bind:onShare="onShare" />
+                        <v-article articleInfo="{{item}}" bind:onArticle="onArticle" bind:onShare="onShare" />
                     </block>
                 </view>
                 <v-loading class="loading" wx:if="{{loading}}" />
@@ -35,7 +35,7 @@
                     </view>
                 </view>
                 <block wx:for="{{articleRecommendList}}" wx:key="">
-                    <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" bind:onShare="onShare" />
+                    <v-article articleInfo="{{item}}"  bind:onArticle="onArticle" bind:onShare="onShare" />
                 </block>
                 <v-loading class="loading" wx:if="{{loading}}" />
             </view>
@@ -43,7 +43,7 @@
         <swiper-item>
             <view class="item-container-update">
                 <block wx:for="{{articleUpdateList}}" wx:key="">
-                    <v-article articleInfo="{{item}}" bind:voteFor="voteFor" bind:onArticle="onArticle" bind:onShare="onShare" />
+                    <v-article articleInfo="{{item}}" bind:onArticle="onArticle" bind:onShare="onShare" />
                 </block>
                 <v-loading class="loading" wx:if="{{loading}}" />
             </view>

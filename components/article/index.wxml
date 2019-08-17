@@ -45,8 +45,8 @@
         </view>
     </view>
     <view class="operation-container">
-        <view class="item-container" hover-class="item-container-hover" bind:tap="voteFor" data-id="{{articleInfo.id}}">
-            <v-like like="{{articleInfo.isVote}}" count="{{articleInfo.likes}}" />
+        <view class="item-container" hover-class="item-container-hover"  data-id="{{articleInfo.id}}">
+            <v-like bind:like="onLike" like="{{articleInfo.isVote}}" count="{{articleInfo.likes}}" />
         </view>
         <view class="item-container" hover-class="item-container-hover" bind:tap="onArticle">
             <image class="operation-image" mode="scaleToFill" src="/images/article/comments-on.png">

@@ -47,11 +47,6 @@ Page({
         })
     },
 
-    voteFor(event) {
-        let index = event.detail.index;
-        let id = event.detail.id;
-        Article.voteForArticle(id, index)
-    },
 
     getFollowedTopic(event) {
         Topic.getFollowedTopic().then(res => {
@@ -208,6 +203,7 @@ Page({
 
     onArticle(event) {
         let id = event.detail.id;
+        let articleList = [];
         if (this.data.currentTab == 0) {
             articleList = this.data.articleFollowList;
         } else if (this.data.currentTab == 1) {

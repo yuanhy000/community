@@ -93,7 +93,7 @@
             </view>
         </swiper-item>
         <swiper-item>
-            <view class="item-container-follow" wx:if="{{authorized}}">
+            <view class="item-container-follow" >
                 <view class="sub-tab">
                     <block wx:for="{{subTabFollowInfo}}" wx:key="">
                         <view class="sub-tab-item-container" bindtap="clickFollowSubTab" data-current="{{index}}">
@@ -103,7 +103,7 @@
                         </view>
                     </block>
                 </view>
-                <view class="sub-content">
+                <view class="sub-content" wx:if="{{authorized}}">
                     <view class="topic-container" wx:if="{{topicList.length!=0}}">
                         <block wx:for="{{topicList}}" wx:key="">
                             <view class="topic-item" data-id="{{item.id}}" bind:tap="onTopic">

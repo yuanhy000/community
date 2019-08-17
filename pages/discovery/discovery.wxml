@@ -1,10 +1,4 @@
 <view class="discovery-container">
-    <!-- <view class="search-container">
-        <view class="search-box" bind:tap="onSearch">
-            <image class="icon" src="../../images/addition/search.png"></image>
-            <view class="bar">内容 / 主题 / 话题 / 用户</view>
-        </view>
-    </view> -->
     <swiper-view class="swiper-tab" scroll-with-animation="true" scroll-x="true">
         <block wx:for="{{tabInfo}}" wx:key="">
             <view bindtap="clickTab" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}">
